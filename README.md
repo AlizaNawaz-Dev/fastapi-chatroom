@@ -16,7 +16,7 @@ It supports user authentication, chatroom creation, and real-time messaging usin
 
 ---
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 ### 1. Clone the repository
 
