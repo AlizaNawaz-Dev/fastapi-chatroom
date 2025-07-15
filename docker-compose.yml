@@ -1,0 +1,48 @@
+services:
+  backend:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mysql
+      - redis
+    container_name: fastapi
+    volumes:
+      - ./:/usr/src/app
+    command: uvicorn app.main:app --host 0.0.0.0 --reload
+    environment:
+      - database_hostname=${database_hostname}
+      - database_port=${database_port}
+      - database_password=${database_password}
+      - database_name=${database_name}
+      - database_username=${database_username}
+      - secret_key=${secret_key}
+      - algorithm=${algorithm}
+      - access_token_expiry_minutes=${access_token_expiry_minutes}
+      - redis_host=${redis_host}
+      - redis_port=${redis_port}
+      - redis_db=${redis_db}
+
+  mysql:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_DATABASE: chatroomdb
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  mysql_data:
+  redis_data:
+
+
