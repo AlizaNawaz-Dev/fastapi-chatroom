@@ -11,8 +11,8 @@ class Send_msg(BaseModel):
 
 #schema for user registration
 class Register_user(BaseModel):
-     username:str= Field(..., min_length=3, max_length=30,pattern=r"^[a-zA-Z0-9_-]+$",
-                         description="Only letters, numbers, underscores, and dashes allowed")
+     username:str#= Field(..., min_length=3, max_length=30,pattern=r"^[a-zA-Z0-9_-]+$",
+                  #       description="Only letters, numbers, underscores, and dashes allowed")
      email:EmailStr
      password:str= Field(..., min_length=8, max_length=100)
 
@@ -22,8 +22,8 @@ class Tokendata(BaseModel):
      
 #schema for creating chatroom
 class create_room(BaseModel):
-    room_name:str=Field(...,pattern=r"^[a-zA-Z_-]+$",
-                         description="Only letters, underscores, and dashes allowed")
+    room_name:str#=Field(...,pattern=r"^[a-zA-Z_-]+$",
+                  #       description="Only letters, underscores, and dashes allowed")
     is_private:Optional[bool]
 
 #schema for user login

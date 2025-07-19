@@ -40,12 +40,12 @@ def get_chatroom(id:int,db: Session=Depends(get_db),current_user: int= Depends(o
 #Delete chatroom
 @router.delete('/{name}')
 def delete_room(name:str=Path(...),db: Session=Depends(get_db),current_user: int= Depends(oauth2.Get_Current_User)):
-    pattern = r"^[a-zA-Z_-]+$"
-    if not re.match(pattern, name):
-        raise HTTPException(
-            status_code=400,
-            detail="Invalid room name. Only letters, spaces, underscores (_) and dashes (-) are allowed."
-        )
+   # pattern = r"^[a-zA-Z_-]+$"
+    # if not re.match(pattern, name):
+    #     raise HTTPException(
+    #         status_code=400,
+    #         detail="Invalid room name. Only letters, spaces, underscores (_) and dashes (-) are allowed."
+    #     )
     room=db.query(models.Chatroom).filter(models.Chatroom.room_name==name)
     data=room.first()
     if data:
@@ -59,9 +59,3 @@ def delete_room(name:str=Path(...),db: Session=Depends(get_db),current_user: int
 
 
 
-
-#TODO
-#Fuzzy Searching
-#Websockets
-#Docker
-#Github wth clean readme

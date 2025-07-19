@@ -18,6 +18,12 @@ It supports user authentication, chatroom creation, and real-time messaging usin
 
 
 ## Setup Instructions
+## 📽️ Demo
+
+![Chatroom Demo](./assets/Chatroom_Demo.gif)
+
+
+##  Setup Instructions
 
 ### 1. Clone the repository
 
